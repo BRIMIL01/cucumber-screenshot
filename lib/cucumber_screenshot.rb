@@ -1,6 +1,5 @@
 require 'cucumber'
 require 'cucumber/formatter/html'
-require 'webrat'
 require 'yaml'
 require 'nokogiri'
 

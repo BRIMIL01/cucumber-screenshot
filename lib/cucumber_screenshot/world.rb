@@ -6,7 +6,7 @@ module CucumberScreenshot
     def base_screenshot_directory_name
       # TODO: Make this configurable
       # TODO: Make this work for other frameworks e.g. sinatra
-      "#{RAILS_ROOT}/features/screenshots"
+      "#{Rails.root.to_s}/features/screenshots"
     end
 
     def screenshot(directory_name = base_screenshot_directory_name, file_name = "screenshot-#{(Time.now.to_f * 100).to_i}")
@@ -42,7 +42,11 @@ module CucumberScreenshot
 
     protected
       def current_response_body
-        webrat_session.send(:response) && webrat_session.response_body
+        if defined?(Webrat) != nil
+          webrat_session.send(:response) && webrat_session.response_body
+        elsif defined?(Capybara) != nil
+          page.body
+        end
       end
 
       # So that references to stylesheets, javascript and images will work
@@ -74,7 +78,7 @@ Unable to make screenshot, to find out what went wrong try the following from th
       end
 
       def config
-        config_file = File.expand_path(File.join(RAILS_ROOT, 'config', 'cucumber_screenshot.yml'))
+        config_file = File.expand_path(File.join(Rails.root.to_s, 'config', 'cucumber_screenshot.yml'))
         @config ||= if File.exist?(config_file)
           YAML::load(File.open(config_file))
         else
@@ -87,7 +91,7 @@ Unable to make screenshot, to find out what went wrong try the following from th
       end
 
       def doc_root
-        File.expand_path(File.join(RAILS_ROOT, 'public'))
+        File.expand_path(File.join(Rails.root.to_s, 'public'))
       end
   end
 end
