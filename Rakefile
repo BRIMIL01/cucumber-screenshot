@@ -24,7 +24,7 @@ task :default => ['spec']
 spec = Gem::Specification.new do |s|
   # Change these as appropriate
   s.name              = 'cucumber-screenshot'
-  s.version           = '0.3.4'
+  s.version           = '0.3.5'
   s.summary           = 'Extension for Cucumber to capture HTML snapshots/PNG screenshots of your app'
 
   s.description       = 'Extension for Cucumber (http://cukes.info/) that makes it easy to take HTML snapshots and also to use Webkit to capture PNG screenshots of your web application during tests'
@@ -37,7 +37,7 @@ spec = Gem::Specification.new do |s|
   s.rdoc_options      = %w(--main README.rdoc)
 
   # Add any extra files to include in the gem
-  s.files             = %w(cucumber-screenshot.gemspec cucumber-screenshot.tmproj MIT-LICENSE Rakefile README.rdoc) + Dir.glob("{spec,lib/**/*}")
+  s.files             = %w(cucumber-screenshot.gemspec MIT-LICENSE Rakefile README.rdoc) + Dir.glob("{spec,lib/**/*}")
   s.require_paths     = ["lib"]
 
   # If you want to depend on other gems, add them here, along with any

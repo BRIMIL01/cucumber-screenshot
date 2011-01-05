@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{cucumber-screenshot}
-  s.version = "0.3.4"
+  s.version = "0.3.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Joel Chippindale"]
@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.description = %q{Extension for Cucumber (http://cukes.info/) that makes it easy to take HTML snapshots and also to use Webkit to capture PNG screenshots of your web application during tests}
   s.email = %q{joel.chippindale@gmail.com}
   s.extra_rdoc_files = ["README.rdoc"]
-  s.files = ["cucumber-screenshot.gemspec", "cucumber-screenshot.tmproj", "MIT-LICENSE", "Rakefile", "README.rdoc", "spec", "lib/cucumber_screenshot", "lib/cucumber_screenshot/world.rb", "lib/cucumber_screenshot.rb"]
+  s.files = ["cucumber-screenshot.gemspec", "MIT-LICENSE", "Rakefile", "README.rdoc", "spec", "lib/cucumber_screenshot", "lib/cucumber_screenshot/world.rb", "lib/cucumber_screenshot.rb"]
   s.homepage = %q{http://github.com/mocoso/cucumber-screenshot}
   s.post_install_message = %q{To take actual screenshots rather than just snapshots of the HTML returned you will need Mac OS X 10.5 or later with RubyCocoa.
 

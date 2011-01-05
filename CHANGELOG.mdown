@@ -1,5 +1,12 @@
 # Change log
 
+## Version 0.3.5
+
+- Removed dependency on webrat and added ability to use with capybara
+- Added bundler
+- Replaced webrat test dependency with nokogiri
+- Upgraded to rspec 2
+
 ## Version 0.3.4
 
 - Update to version 0.9.x of cucumber
