@@ -42,9 +42,9 @@ module CucumberScreenshot
 
     protected
       def current_response_body
-        if defined?(Webrat) != nil
+        if respond_to?(:webrat_session)
           webrat_session.send(:response) && webrat_session.response_body
-        elsif defined?(Capybara) != nil
+        elsif respond_to?(:page)
           page.body
         end
       end

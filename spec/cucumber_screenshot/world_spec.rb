@@ -11,7 +11,9 @@ describe CucumberScreenshot::World do
 
   describe '#base_screenshot_directory_name' do
     it "add features/screenshots to rails root" do
-      ::RAILS_ROOT = 'tmp'
+      #::RAILS_ROOT = 'tmp'
+      Rails = mock("rails")
+      Rails.stub_chain(:root, :to_s).and_return("tmp")
       TestWorld.new.base_screenshot_directory_name.should == 'tmp/features/screenshots'
     end
   end
@@ -112,7 +114,9 @@ describe CucumberScreenshot::World do
 </body>
 </html>
 }
-          @session.send(:rewrite_local_urls, source).should have_selector(%{head > base[href="http://localhost:3000"]})
+          Nokogiri::HTML(@session.send(:rewrite_local_urls, source)).css('href:regex(".*")').each do |element|
+            element.href.should =~ /^http:\/\/localhost:3000/
+          end
         end
 
         it 'should not change the document when there is no head element' do

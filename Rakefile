@@ -1,10 +1,9 @@
 begin
-  require 'spec'
-  require 'spec/rake/spectask'
-  desc 'Run the cucumber-screenshot specs'
-  Spec::Rake::SpecTask.new('spec') do |t|
-    t.spec_files = FileList['spec/**/*_spec.rb']
-    t.spec_opts = ['--options', 'spec/spec.opts']
+  require 'rspec/core/rake_task'
+
+  RSpec::Core::RakeTask.new do |t|
+    t.pattern = FileList['spec/**/*_spec.rb']  
+    t.rspec_opts = ["--color"]
   end
 rescue LoadError
   puts 'Rspec not available, install it with: gem install rspec'
@@ -45,17 +44,17 @@ spec = Gem::Specification.new do |s|
   # relevant versions
   # s.add_dependency("some_other_gem", "~> 0.1.0")
 
-  s.add_dependency('cucumber', '~> 0.9')
-  s.add_dependency('webrat', '~> 0.7')
+  s.add_dependency('nokogiri', '~> 1.4')
+  s.add_dependency('snapurl', '~> 0.0.3')
 
   # If your tests use any gems, include them here
-  s.add_development_dependency('rspec', '~>1.3')
+  s.add_dependency('rspec', '~> 2.4')
 
   s.post_install_message = 'To take actual screenshots rather than just snapshots of the HTML returned you will need Mac OS X 10.5 or later with RubyCocoa.
 
 You will also need to install the snapurl gem
 
-    gem install snapurl --version=0.3.0
+    gem install snapurl --version=0.0.3
 
 For details about how to set up your features to make use of cucumber-screenshot see http://github.com/mocoso/cucumber-screenshot'
 end
