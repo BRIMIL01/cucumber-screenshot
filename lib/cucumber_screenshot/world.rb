@@ -51,9 +51,9 @@ module CucumberScreenshot
       
       def current_session
         if respond_to?(:webrat_session)
-          webrat_session
+          webrat_session.send(:request) && webrat_session
         elsif respond_to?(:page)
-          page.body
+          page
         end
       end
 
