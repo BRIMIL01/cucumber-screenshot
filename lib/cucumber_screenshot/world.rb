@@ -37,13 +37,21 @@ module CucumberScreenshot
     end
 
     def screenshot_due?
-      current_response_body && current_response_body != response_body_for_last_screenshot && !webrat_session.redirect?
+      current_response_body && current_response_body != response_body_for_last_screenshot && !current_session.redirect?
     end
 
     protected
       def current_response_body
         if respond_to?(:webrat_session)
-          webrat_session.send(:response) && webrat_session.response_body
+          current_session.response_body
+        elsif respond_to?(:page)
+          current_session.body
+        end
+      end
+      
+      def current_session
+        if respond_to?(:webrat_session)
+          webrat_session
         elsif respond_to?(:page)
           page.body
         end
